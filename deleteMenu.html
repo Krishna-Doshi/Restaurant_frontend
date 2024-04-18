@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Delete Items</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        thead {
+            background-color: #f4f4f4;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 25vh; 
+        }
+
+        button {
+            padding: 10px; 
+            background-color: #f4f4f4; 
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: blanchedalmond; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Items</h1>
+    <form id="deleteForm">
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                   
+                    <th>Item Name</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                      <th>Select</th>
+                   
+                </tr>
+            </thead>
+            <tbody id="delete-menu">
+            </tbody>
+        </table>
+        <div class="button-container">
+        <button type="submit">Delete Selected Items</button>
+        </div>
+    </form>
+
+    <script>
+        
+        var items = JSON.parse(localStorage.getItem('items')) || [];
+
+        var itemsTableBody = document.getElementById('delete-menu');
+
+        
+        items.forEach(function(item, index) {
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = `
+               
+                <td>${item.name}</td>
+                <td>${item.cost}</td>
+                <td>${item.type}</td>
+                 <td><input type="checkbox" name="itemToDelete" value="${index}"></td>
+            `;
+            itemsTableBody.appendChild(newRow);
+        });
+
+      
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            var checkboxes = document.querySelectorAll('input[name="itemToDelete"]:checked');
+
+          
+            checkboxes.forEach(function(checkbox) {
+                var selectedIndex = checkbox.value;
+                var deletedItem = items[selectedIndex].name
+                items.splice(selectedIndex, 1);
+                alert(deletedItem+" deleted successfully");add
+            });
+
+        
+            localStorage.setItem('items', JSON.stringify(items));
+            
+            window.location.href = 'viewMenu.html';
+        });
+    </script>
+</body>
+</html>

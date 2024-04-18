@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Engineer's Kitchen</title>
+    <style>
+        body{
+            background-image: url('https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3Vwd2s2MTY2MTU3Ny13aWtpbWVkaWEtaW1hZ2Uta293YXBlZWouanBn.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+       
+        }
+        h1{
+            /*text-align: center;*/
+            margin: 0;
+            font-size: 24px;
+        }
+        img{
+            position: absolute;
+            top: 7px;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            height:100px;
+            width: 100px;
+        }
+
+        .button-container{
+            position: absolute;
+            margin: 10px;
+            top: 150px;
+            left: 0;
+        }
+
+        .button-container button{
+           display: block;
+            margin-bottom: 10px;
+            width: 200px; 
+            height: 50px; 
+            font-size: 18px;
+            padding: 10px; 
+            border: none; 
+            background-color: #f4f4f4;
+            color: black; 
+            cursor: pointer; 
+            border-radius: 5px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+
+        .button-container button:hover {
+            background-color: blanchedalmond; 
+        }
+          
+
+        .logo-container {
+            position: absolute;
+            top: 220px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container a {
+            margin-right: 70px; 
+            position: relative; 
+            display: inline-block; 
+        }
+
+        .logo-container img {
+            height: 50px;
+            width: auto;
+        }
+         .footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer p {
+            margin: 0 30px; 
+        }
+        nav{
+            background-color: #f4f4f4;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+    <h1>Engineer's Kitchen</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGv6cIDYs88a1R_Zo4IRo25UAS2klUIkcBy11jJ1vNVA&s" alt="Engineer's kitchen logo'">
+    </nav>
+
+
+    <div class="button-container">
+    <button onclick="window.location.href='addMenu.html'">Add Menu</button>
+<button onclick="window.location.href='deleteMenu.html'">Delete Menu</button>
+<button onclick="window.location.href='viewMenu.html'">View Menu</button>
+
+    </div>
+
+    <div class="logo-container">
+         <a href="Swiggy.html"><img src="https://upload.wikimedia.org/wikipedia/commons/1/13/Swiggy_logo.png" alt="Swiggy logo"></a>
+        <a href="Zomato.html"><img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Zomato_logo.png" alt="Zomato logo"></a>
+    </div>
+
+    <div class="footer">
+        <pre>Address:123, Abc building, GF
+ xyz Road, State</pre>
+        <p>Email:enginnerk@demo.com</p>
+        <p>Contact-No:+91-7766889900</p>
+
+    </div>
+
+
+
+</body>
+</html>

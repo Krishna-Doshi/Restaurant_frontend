@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Menu</title>
+    <style>
+         table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        
+        thead {
+            background-color: #f4f4f4;
+        }
+         h1 {
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+         .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 10px; 
+            }
+
+        .search-bar input[type="text"] {
+            padding: 5px;
+            width: 50%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menu</h1>
+   <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by name or type">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Item Name</th>
+                <th>Cost</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody id="menu-table"></tbody>
+    </table>
+
+    <script>
+        
+        var items = JSON.parse(localStorage.getItem('items')) || [];
+
+       
+        var menuTableBody = document.getElementById('menu-table');
+
+        
+        items.forEach(function(item, index) {
+            var newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${item.name}</td>
+                <td>${item.cost}</td>
+                <td>${item.type}</td>
+            `;
+            menuTableBody.appendChild(newRow);
+        });
+
+          function renderItems() {
+            var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+            menuTableBody.innerHTML = ''; 
+
+            items.forEach(function(item, index) {
+                if (item.name.toLowerCase().includes(searchQuery) || item.type.toLowerCase().includes(searchQuery)) {
+                    var newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${item.name}</td>
+                        <td>${item.cost}</td>
+                        <td>${item.type}</td>
+                    `;
+                    menuTableBody.appendChild(newRow);
+                }
+            });
+        }
+
+        renderItems();
+
+        document.getElementById('searchInput').addEventListener('input', renderItems);
+    </script>
+</body>
+</html>
